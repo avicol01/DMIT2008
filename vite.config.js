@@ -16,7 +16,7 @@ export default defineConfig({
 			input: {
 				index: resolve(__dirname, "./index.html"),
 				demo: resolve(__dirname, "./live-demo.html"),
-				login: resolve(__dirname, "./log-in.html"),
+				login: resolve(__dirname, "./login.html"),
 				user: resolve(__dirname, "./user.html")
 			},
 		},
