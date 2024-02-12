@@ -1,18 +1,15 @@
-import { getToDoData } from "./lib/firebase/api";
+import { getExpensesData } from './lib/firebase/api';
+import { expenseItemTemplte } from './templates/expenseItem';
 
-// single source of truth for the data...
-let store = [];
 async function appInit() {
-	const toDos = await getToDoData();
+const appData = await getExpensesData();
+const expensesItem = Object.values(appData).map((obj) => {
+	return expenseItemTemplte(obj.data);
+});
 
-
-	console.log(toDos);
+expensesItem.forEach((data) => {
+	document.querySelector('#root').insertAdjacentHTML('afterbegin', data);
+})
 }
 
 appInit();
-
-/* 
-
-       RTDB returns Object of Object.... 
-       [objets] 
-*/

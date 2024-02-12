@@ -4,34 +4,24 @@
 
 */
 
-import { ref, child, get } from "firebase/database";
+import { ref, get } from 'firebase/database';
+import { db } from './config/firebase/firebaseInit';
 
-import { db } from "./../../config/firebase/firebaseInit";
-
-/* 
-          1. connect to the to do list
-               reference  ref
-               const dbRef = ref(db, "/todos")
-
-          Asking for the data from that ref   path to a node in the JSON file...
-          get(ref)===> data snapshot
-
-          extracting the data
-          snapshot.val()
-
-*/
 
 async function getToDoData() {
-	const dbRef = ref(db, "/todos");
+	const dbRef = ref(db, '/todos');
 	const dataSnapshot = await get(dbRef);
 	return await dataSnapshot.val();
 }
 
 export { getToDoData };
 
-/* '
-        Mockaroo 
-        templating....
-        Environmental Vars 
-        Deployment To Vercel
-*/
+async function getExpensesData() {
+	const dbRef = ref(db, '/expenses');
+
+	const dataSnapshot = await get(dbRef);
+	return await dataSnapshot.val();
+	  
+}
+
+export { getExpensesData };
