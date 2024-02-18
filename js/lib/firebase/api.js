@@ -18,7 +18,7 @@ export { getToDoData };
 
 async function getExpensesData() {
 	const dbRef = ref(db, '/expenses');
-
+	
 	const dataSnapshot = await get(dbRef);
 	return await dataSnapshot.val();
 	  

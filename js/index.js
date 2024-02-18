@@ -3,13 +3,19 @@ import { expenseItemTemplte } from './templates/expenseItem';
 
 async function appInit() {
 const appData = await getExpensesData();
-const expensesItem = Object.values(appData).map((obj) => {
-	return expenseItemTemplte(obj.data);
+const expensesItems = Object.values(appData).map((obj) => {
+	return expenseItemTemplte(obj);
+	
 });
 
-expensesItem.forEach((data) => {
-	document.querySelector('#root').insertAdjacentHTML('afterbegin', data);
+// expensesItems.forEach((data) => {
+// 	console.log(data)
+// 	document.querySelector('#root').insertAdjacentHTML('afterbegin', data);
+// })
+expensesItems.forEach((data) => {
+	document.querySelector('#body').insertAdjacentHTML('afterbegin', data);
 })
+
 }
 
 appInit();
